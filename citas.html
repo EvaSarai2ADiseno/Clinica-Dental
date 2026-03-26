@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Agendar cita</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Agendar cita</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav><a href="index.html">Volver al Inicio</a></nav>
+    
+    <h1>Agenda tu cita</h1>
+    <form id="form">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="date" name="fecha" required>
+        <button type="submit">Enviar Solicitud</button>
+    </form>
 
-<h1>Agenda tu cita</h1>
-
-<form id="form">
-  <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="email" name="email" placeholder="Correo" required>
-  <input type="date" name="fecha" required>
-  <button type="submit">Enviar</button>
-</form>
-
-<script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxTnUd4hkza9zowjYWXgMRmEzOzQsFV7KuPYvsXKJPOKTYuSbT1pec3sc1pSpftki7g/exec';
-
-document.getElementById('form').addEventListener('submit', e => {
-  e.preventDefault();
-  fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
-    .then(() => alert("Cita guardada"))
-    .catch(error => alert("Error"));
-});
-</script>
-
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxTnUd4hkza9zowjYWXgMRmEzOzQsFV7KuPYvsXKJPOKTYuSbT1pec3sc1pSpftki7g/exec';
+        document.getElementById('form').addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
+                .then(() => alert("Cita guardada correctamente. Nos pondremos en contacto."))
+                .catch(error => alert("Hubo un error al guardar la cita."));
+        });
+    </script>
 </body>
 </html>
